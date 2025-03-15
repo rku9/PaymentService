@@ -42,6 +42,15 @@ public class StripePaymentGateway implements PaymentGateway{
                                             .setQuantity(1L)
                                             .build()
                             )
+                            .setAfterCompletion(
+                                    PaymentLinkCreateParams.AfterCompletion.builder()
+                                            .setType(PaymentLinkCreateParams.AfterCompletion.Type.REDIRECT)
+                                            .setRedirect(
+                                                    PaymentLinkCreateParams.AfterCompletion.Redirect.builder()
+                                                            .setUrl("https://www.southparkstudios.com/episodes/d9sb5t/south-park-the-red-badge-of-gayness-season-3-ep-14")
+                                                            .build()
+                                            ).build()
+                            )
                             .build();
 
             PaymentLink paymentLink = PaymentLink.create(params2);
